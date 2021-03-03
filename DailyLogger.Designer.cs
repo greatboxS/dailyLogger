@@ -42,6 +42,9 @@
             this.SettingFont = new System.Windows.Forms.ToolStripMenuItem();
             this.topMostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FullScreenMode = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuViewHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.txtLogger = new System.Windows.Forms.TextBox();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.MainBottomPanel = new System.Windows.Forms.Panel();
@@ -52,9 +55,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SeperatePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.DLoggerNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuViewHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenuBar.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.MainBottomPanel.SuspendLayout();
@@ -162,6 +162,29 @@
             this.FullScreenMode.Text = "Full screen (Ctrl+Alt+M)";
             this.FullScreenMode.Click += new System.EventHandler(this.FullScreenMode_Click);
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuViewHelp,
+            this.MenuAbout});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // MenuViewHelp
+            // 
+            this.MenuViewHelp.Name = "MenuViewHelp";
+            this.MenuViewHelp.Size = new System.Drawing.Size(173, 22);
+            this.MenuViewHelp.Text = "View Help";
+            this.MenuViewHelp.Click += new System.EventHandler(this.MenuViewHelp_Click);
+            // 
+            // MenuAbout
+            // 
+            this.MenuAbout.Name = "MenuAbout";
+            this.MenuAbout.Size = new System.Drawing.Size(173, 22);
+            this.MenuAbout.Text = "About DailyLogger";
+            this.MenuAbout.Click += new System.EventHandler(this.MenuAbout_Click);
+            // 
             // txtLogger
             // 
             this.txtLogger.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -258,29 +281,6 @@
             this.DLoggerNotifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DLoggerNotifyIcon_MouseClick);
             this.DLoggerNotifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DLoggerNotifyIcon_MouseDoubleClick);
             // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuViewHelp,
-            this.MenuAbout});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // MenuViewHelp
-            // 
-            this.MenuViewHelp.Name = "MenuViewHelp";
-            this.MenuViewHelp.Size = new System.Drawing.Size(180, 22);
-            this.MenuViewHelp.Text = "View Help";
-            this.MenuViewHelp.Click += new System.EventHandler(this.MenuViewHelp_Click);
-            // 
-            // MenuAbout
-            // 
-            this.MenuAbout.Name = "MenuAbout";
-            this.MenuAbout.Size = new System.Drawing.Size(180, 22);
-            this.MenuAbout.Text = "About DailyLogger";
-            this.MenuAbout.Click += new System.EventHandler(this.MenuAbout_Click);
-            // 
             // DailyLogger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,7 +294,9 @@
             this.MainMenuStrip = this.MainMenuBar;
             this.Name = "DailyLogger";
             this.Padding = new System.Windows.Forms.Padding(5);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Daily Logger";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DailyLogger_FormClosing);
             this.Load += new System.EventHandler(this.DailyLogger_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DailyLogger_KeyDown);
