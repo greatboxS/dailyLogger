@@ -33,7 +33,8 @@ namespace DailyLogger.Views
         private void btnSearching_Click(object sender, EventArgs e)
         {
             DateTime searchingDate = new DateTime();
-            DateTime.TryParse(txtSearchingDate.Text, out searchingDate);
+            DateTime.TryParseExact(txtSearchingDate.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, 
+                System.Globalization.DateTimeStyles.None, out searchingDate);
             int hour = 0;
             int min = 0;
             int.TryParse(txtHour.Text, out hour);

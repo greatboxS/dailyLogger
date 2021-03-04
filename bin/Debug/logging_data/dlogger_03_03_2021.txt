@@ -35,3 +35,31 @@ asfefa
 --HH:mm 17:22
 --HH-17
 --------------------------------------------------------------------------------
+--HH-23
+--HH:mm 23:23
+------- 23:23:15 ------
+
+Global aliases (call GAS)
+@Buildings.Administration.Floor_1.Room_103.Light_08
+With this addressing scheme for three buildings, each with six floors, 34 rooms, and 20 lights you would have to define 12,240 unique tags on a display to fully define the namespace. However, you could do the following: define a Building_ID alias; substitution of which into your path would yield:
+
+ 
+
+@Buildings.<# Building_ID#>.Room_103.Light_08.
+Note. Global aliases are referenced by enclosing them in angle brackets and number symbols: <# Global_Alias_Name#>.
+
+
+
+
+--HH:mm 23:23
+--HH-23
+--------------------------------------------------------------------------------
+--HH-23
+--HH:mm 23:23
+------- 23:23:35 ------
+
+@Buildings.<# Building_ID#>.<# Room_ID#>.<# Light_ID#>
+
+--HH:mm 23:23
+--HH-23
+--------------------------------------------------------------------------------

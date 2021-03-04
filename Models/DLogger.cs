@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DailyLogger.Models
 {
     public class DLogger
     {
-        public static string LoggerDirectory { get; set; } =Path.Combine( AppDomain.CurrentDomain.BaseDirectory, "logging_data");
+        public static string LoggerDirectory { get; set; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logging_data");
         public static string TodayLoggerFile = Path.Combine(LoggerDirectory, "dlogger_" + DateTime.Now.ToString("MM_dd_yyyy") + ".txt");
         public static string LogFile
         {
@@ -28,8 +29,35 @@ namespace DailyLogger.Models
 
                 TodayLoggerFile = Path.Combine(LoggerDirectory, "dlogger_" + DateTime.Now.ToString("MM_dd_yyyy") + ".txt");
 
+                bool append = true;
                 if (!File.Exists(TodayLoggerFile))
-                    File.Create(TodayLoggerFile);
+                {
+                    using (var wt = File.Create(TodayLoggerFile))
+                    {
+                    }
+
+                    int timeout = 5000;
+                    while (!File.Exists(TodayLoggerFile))
+                    {
+                        Thread.Sleep(100);
+                        timeout -= 100;
+                        if (timeout < 0)
+                            return; 
+                    }
+                    using (StreamWriter wt = new StreamWriter(TodayLoggerFile))
+                    {
+                        wt.WriteLine($"--HH-{DateTime.Now.ToString("HH")}");
+                        wt.WriteLine($"--HH:mm {DateTime.Now.ToString("HH:mm")}");
+                        wt.WriteLine($"------- {DateTime.Now.ToString("HH:mm:ss")} ------");
+                        wt.WriteLine();
+                        wt.WriteLine(commit);
+                        wt.WriteLine();
+                        wt.WriteLine($"--HH:mm {DateTime.Now.ToString("HH:mm")}");
+                        wt.WriteLine($"--HH-{DateTime.Now.ToString("HH")}");
+                        wt.WriteLine("--------------------------------------------------------------------------------");
+                    }
+                    return;
+                }
 
                 using (StreamWriter wt = new StreamWriter(TodayLoggerFile, true))
                 {
@@ -44,7 +72,8 @@ namespace DailyLogger.Models
                     wt.WriteLine("--------------------------------------------------------------------------------");
                 }
             }
-            catch { }
+            catch (Exception ex)
+            { }
         }
 
         public static async Task<string> SearchingData(DateTime searchingDate, int hour, int min, SearchingMode searchingMode)  //time format hh\seperate code -,:\

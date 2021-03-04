@@ -70,7 +70,7 @@
             this.helpToolStripMenuItem});
             this.MainMenuBar.Location = new System.Drawing.Point(5, 5);
             this.MainMenuBar.Name = "MainMenuBar";
-            this.MainMenuBar.Size = new System.Drawing.Size(557, 24);
+            this.MainMenuBar.Size = new System.Drawing.Size(904, 24);
             this.MainMenuBar.TabIndex = 0;
             this.MainMenuBar.Text = "Menu";
             // 
@@ -191,7 +191,7 @@
             this.txtLogger.Location = new System.Drawing.Point(0, 0);
             this.txtLogger.Multiline = true;
             this.txtLogger.Name = "txtLogger";
-            this.txtLogger.Size = new System.Drawing.Size(304, 298);
+            this.txtLogger.Size = new System.Drawing.Size(651, 290);
             this.txtLogger.TabIndex = 1;
             this.txtLogger.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLogger_KeyDown);
             // 
@@ -202,23 +202,23 @@
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(5, 29);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(304, 329);
+            this.MainPanel.Size = new System.Drawing.Size(651, 321);
             this.MainPanel.TabIndex = 2;
             // 
             // MainBottomPanel
             // 
             this.MainBottomPanel.Controls.Add(this.btnSubmit);
             this.MainBottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.MainBottomPanel.Location = new System.Drawing.Point(0, 298);
+            this.MainBottomPanel.Location = new System.Drawing.Point(0, 290);
             this.MainBottomPanel.Name = "MainBottomPanel";
             this.MainBottomPanel.Padding = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.MainBottomPanel.Size = new System.Drawing.Size(304, 31);
+            this.MainBottomPanel.Size = new System.Drawing.Size(651, 31);
             this.MainBottomPanel.TabIndex = 3;
             // 
             // btnSubmit
             // 
             this.btnSubmit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSubmit.Location = new System.Drawing.Point(196, 3);
+            this.btnSubmit.Location = new System.Drawing.Point(543, 3);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(98, 25);
             this.btnSubmit.TabIndex = 0;
@@ -231,9 +231,9 @@
             this.RightDockPanel.Controls.Add(this.listHistories);
             this.RightDockPanel.Controls.Add(this.TopRightPanel);
             this.RightDockPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.RightDockPanel.Location = new System.Drawing.Point(319, 29);
+            this.RightDockPanel.Location = new System.Drawing.Point(666, 29);
             this.RightDockPanel.Name = "RightDockPanel";
-            this.RightDockPanel.Size = new System.Drawing.Size(243, 329);
+            this.RightDockPanel.Size = new System.Drawing.Size(243, 321);
             this.RightDockPanel.TabIndex = 3;
             // 
             // listHistories
@@ -242,7 +242,7 @@
             this.listHistories.HideSelection = false;
             this.listHistories.Location = new System.Drawing.Point(0, 39);
             this.listHistories.Name = "listHistories";
-            this.listHistories.Size = new System.Drawing.Size(243, 290);
+            this.listHistories.Size = new System.Drawing.Size(243, 282);
             this.listHistories.TabIndex = 1;
             this.listHistories.UseCompatibleStateImageBehavior = false;
             this.listHistories.View = System.Windows.Forms.View.List;
@@ -269,9 +269,9 @@
             // SeperatePanel
             // 
             this.SeperatePanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.SeperatePanel.Location = new System.Drawing.Point(309, 29);
+            this.SeperatePanel.Location = new System.Drawing.Point(656, 29);
             this.SeperatePanel.Name = "SeperatePanel";
-            this.SeperatePanel.Size = new System.Drawing.Size(10, 329);
+            this.SeperatePanel.Size = new System.Drawing.Size(10, 321);
             this.SeperatePanel.TabIndex = 4;
             // 
             // DLoggerNotifyIcon
@@ -285,7 +285,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 363);
+            this.ClientSize = new System.Drawing.Size(914, 355);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.SeperatePanel);
             this.Controls.Add(this.RightDockPanel);
@@ -294,7 +294,7 @@
             this.MainMenuStrip = this.MainMenuBar;
             this.Name = "DailyLogger";
             this.Padding = new System.Windows.Forms.Padding(5);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Daily Logger";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DailyLogger_FormClosing);
