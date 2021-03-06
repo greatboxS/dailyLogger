@@ -1,0 +1,10 @@
+--HH-23
+--HH:mm 23:24
+------- 23:24:06 ------
+
+CC-link parameters configuration
+https://dl.mitsubishielectric.com/dl/fa/document/manual/school_text/sh081375eng/sh081375enga.pdf
+
+--HH:mm 23:24
+--HH-23
+--------------------------------------------------------------------------------

@@ -1,9 +1,80 @@
 --HH-14
---HH:mm 14:14
-------- 14:14:22 ------
+--HH:mm 14:23
+------- 14:23:36 ------
 
-safefa
+Jscript.net Timer Example
+var timesCalled:int = 0;
+var timer1:Timer = new Timer();
+timer1.Interval = 1000; // 1 second
+timer1.Enabled = true;
+function MyEventHandler(sender:Object, e:EventArgs) : void {
+timesCalled++;
+if ( timesCalled == 5 ) {
+timer1.remove_Elapsed(MyEventHandler);
+}
+}
 
---HH:mm 14:14
+--HH:mm 14:23
 --HH-14
+--------------------------------------------------------------------------------
+--HH-16
+--HH:mm 16:02
+------- 16:02:33 ------
+
+The problem is that "global" functions cannot be used as delegates this way. This is a side effect of the fact that the delegates created from them are created using:
+
+Delegate.CreateDelegate( Type, Object, String )
+
+--HH:mm 16:02
+--HH-16
+--------------------------------------------------------------------------------
+--HH-16
+--HH:mm 16:42
+------- 16:42:26 ------
+
+var timesCalled:int = 0;
+var dispatcherTimer: System.Windows.Threading.DispatcherTimer;
+var TimerDelegateHandler: Delegate 
+function ThisDisplay_LoadCompleted(sender : System.Object, loadArgs : Ico.Gwx.LoadEventArgs)
+{
+	try {
+		//MessageBox.Show("hello world");
+		//	ThisWindow.FwxClientWrapper.WriteAsync("@sim64:Double.Static(\"Static1\").Value", 1.0,
+		//ThisDocument.CreateDelegate(WriteDoneDelegate, this, "AsyncWriteComplete"), null);
+		
+		TimerDelegateHandler = ThisDocument.CreateDelegate(
+		System.EventHandler,
+		 	this, 
+		"DispatcherTimerCallback");
+		
+		dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+		var TimerEventHandler: System.EventHandler;
+		dispatcherTimer.add_Tick(TimerDelegateHandler);
+		dispatcherTimer.Interval = new TimeSpan(0,0,1);
+		dispatcherTimer.Start();
+	}
+	catch(nullException:NullReferenceException) {
+	}
+}
+
+function DispatcherTimerCallback(sender:Object, e:EventArgs) :void{
+	try {
+		timesCalled++;
+		ThisWindow.FwxClientWrapper.Write("@sim64:Float.Static(\"Static1\").Value", timesCalled);
+		//if ( timesCalled == 20 ) {
+			//dispatcherTimer.remove_Tick(TimerDelegateHandler);
+			//MessageBox.Show("Event removed");
+		//}
+	} 
+	catch(nullException:NullReferenceException) {
+	}
+}
+			
+function AsyncWriteComplete(result : WriteDoneResult)
+{
+	MessageBox.Show(result.Status.Code.ToString())
+}
+
+--HH:mm 16:42
+--HH-16
 --------------------------------------------------------------------------------

@@ -13,3 +13,8 @@ D:\vs_19\CSharp\2_Winform\DailyLogger\DailyLogger\obj\Debug\DailyLogger.pdb
 D:\vs_19\CSharp\2_Winform\DailyLogger\DailyLogger\obj\Debug\DailyLogger.Views.SearchingForm.resources
 D:\vs_19\CSharp\2_Winform\DailyLogger\DailyLogger\obj\Debug\DailyLogger.Views.AboutForm.resources
 D:\vs_19\CSharp\2_Winform\DailyLogger\DailyLogger\obj\Debug\DailyLogger.Views.HelpForm.resources
+D:\vs_19\CSharp\2_Winform\DailyLogger\DailyLogger\bin\Debug\EntityFramework.dll
+D:\vs_19\CSharp\2_Winform\DailyLogger\DailyLogger\bin\Debug\EntityFramework.SqlServer.dll
+D:\vs_19\CSharp\2_Winform\DailyLogger\DailyLogger\bin\Debug\EntityFramework.xml
+D:\vs_19\CSharp\2_Winform\DailyLogger\DailyLogger\bin\Debug\EntityFramework.SqlServer.xml
+D:\vs_19\CSharp\2_Winform\DailyLogger\DailyLogger\obj\Debug\DailyLogger.csprojAssemblyReference.cache

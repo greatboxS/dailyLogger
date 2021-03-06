@@ -103,7 +103,7 @@ namespace DailyLogger
 
             if (DailyLoggerViewModels.OldCommit.Contains(cm))
                 return;
-            DLogger.WriteCommit(DLogger.LoggerDirectory, cm);
+            DLogger.WriteCommit(DLogger.LoggerDirectory, cm, "");
             DailyLoggerViewModels.OldCommit.Add(cm);
             txtLogger.Text = "";
             listHistories.Items.Add($"{DateTime.Now.ToString("-> HH:mm:ss")} : {cm.Length} characters");

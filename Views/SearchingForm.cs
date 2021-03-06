@@ -33,7 +33,7 @@ namespace DailyLogger.Views
         private void btnSearching_Click(object sender, EventArgs e)
         {
             DateTime searchingDate = new DateTime();
-            DateTime.TryParseExact(txtSearchingDate.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, 
+            DateTime.TryParseExact(txtSearchingDate.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture,
                 System.Globalization.DateTimeStyles.None, out searchingDate);
             int hour = 0;
             int min = 0;
@@ -41,7 +41,7 @@ namespace DailyLogger.Views
             int.TryParse(txtMins.Text, out min);
 
             lbStatus.Text = $"Searching for data in {searchingDate.ToString("dd/MM/yyyy")} at {hour.ToString("00")}:{min.ToString("00")}";
-            switch(cbxSearchingMode.SelectedIndex)
+            switch (cbxSearchingMode.SelectedIndex)
             {
                 case 0: // searching by dd
                     DLogger.SearchingData(searchingDate, hour, min, DLogger.SearchingMode.SDAY)
@@ -56,6 +56,32 @@ namespace DailyLogger.Views
                         .ContinueWith(data => txtSearchingData.SetPropertyThreadSafe(() => txtSearchingData.Text, data.Result));
                     break;
             }
+        }
+
+        private void btnSearchCommit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var commits = DLogger.SqlLiteDbContext.DailyLoggerCommit
+                    .Where(i => i.Commit.Contains(txtSearchingCommit.Text))
+                    .ToList();
+
+                lbStatus.Text = $"Found {commits.Count} commits in database";
+
+                string result = string.Empty;
+                int counter = 0;
+                foreach (var item in commits)
+                {
+                    counter++;
+                    result += $"---------> {counter}: {item.CommitTime.ToString("dd/MM/yyyy, HH:mm:ss")}\r\n";
+                    result += $"File: {item.LoggingFilePath}\r\n";
+                    result += $"Caption: {item.Caption}\r\n\r\n{item.Commit}\r\n";
+                    result += "\r\n";
+                }
+
+                txtSearchingData.Text = result;
+            }
+            catch { }
         }
     }
 }

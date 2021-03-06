@@ -12,6 +12,8 @@ namespace DailyLogger.Models
     {
         public static string LoggerDirectory { get; set; } = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logging_data");
         public static string TodayLoggerFile = Path.Combine(LoggerDirectory, "dlogger_" + DateTime.Now.ToString("MM_dd_yyyy") + ".txt");
+
+        public static SqlLiteDbContext SqlLiteDbContext = new SqlLiteDbContext(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "daily_logger.db"));
         public static string LogFile
         {
             get
@@ -19,7 +21,7 @@ namespace DailyLogger.Models
                 return Path.Combine(LoggerDirectory, "dlogger_" + DateTime.Now.ToString("MM_dd_yyyy") + ".txt"); ;
             }
         }
-        public static void WriteCommit(string folder, string commit)
+        public static void WriteCommit(string folder, string commit, string caption)
         {
             try
             {
@@ -28,6 +30,15 @@ namespace DailyLogger.Models
                     Directory.CreateDirectory(LoggerDirectory);
 
                 TodayLoggerFile = Path.Combine(LoggerDirectory, "dlogger_" + DateTime.Now.ToString("MM_dd_yyyy") + ".txt");
+
+                SqlLiteDbContext.DailyLoggerCommit.Add(new DailyLoggerCommit
+                {
+                    Caption = caption,
+                    Commit = commit,
+                    CommitTime = DateTime.Now,
+                    LoggingFilePath = TodayLoggerFile,
+                });
+                SqlLiteDbContext.SaveChanges();
 
                 bool append = true;
                 if (!File.Exists(TodayLoggerFile))
